@@ -1,0 +1,185 @@
+.elegans-liquid-silhouette {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  display: block;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.elegans-liquid-content {
+  position: relative;
+  z-index: 1;
+}
+
+.liquid-tabs-control {
+  --liquid-tabs-radius: 10px;
+  --liquid-tab-radius: 7px;
+  --liquid-tabs-surface: var(--control-surface, #f1f1f1);
+  --liquid-tab-rest-fill: var(--control-active-solid, #ffffff);
+  --liquid-tab-fill: var(--liquid-tab-rest-fill);
+  --liquid-tab-motion-fill: #ffffff;
+  --liquid-tab-active-ink: var(--ink-primary, #171717);
+  --liquid-tab-idle-ink: #6c6c6c;
+  width: max-content;
+  max-width: 100%;
+  border-radius: var(--liquid-tabs-radius);
+  background: transparent;
+  color: var(--ink-primary, #171717);
+  transition: color var(--motion-component, 320ms)
+    var(--motion-ease-out, cubic-bezier(0.23, 1, 0.32, 1));
+}
+
+.liquid-tabs-control::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--liquid-tabs-surface);
+  content: "";
+  pointer-events: none;
+  transform: scaleX(var(--liquid-rail-scale, 1));
+  transition: background-color var(--motion-component, 320ms)
+    var(--motion-ease-out, cubic-bezier(0.23, 1, 0.32, 1));
+}
+
+.liquid-tabs-control[data-liquid-rail-direction="right"]::before {
+  transform-origin: left center;
+}
+
+.liquid-tabs-control[data-liquid-rail-direction="left"]::before {
+  transform-origin: right center;
+}
+
+[data-theme="dark"] .liquid-tabs-control {
+  --liquid-tabs-surface: #181818;
+  --liquid-tab-rest-fill: var(--control-active-solid, #252525);
+  --liquid-tab-motion-fill: #343434;
+  --liquid-tab-active-ink: var(--ink-primary, #fbfbfb);
+  --liquid-tab-idle-ink: var(--ink-secondary, #cacaca);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .liquid-tabs-control {
+    --liquid-tabs-surface: #181818;
+    --liquid-tab-rest-fill: var(--control-active-solid, #252525);
+    --liquid-tab-motion-fill: #343434;
+    --liquid-tab-active-ink: var(--ink-primary, #fbfbfb);
+    --liquid-tab-idle-ink: var(--ink-secondary, #cacaca);
+  }
+}
+
+[data-theme="light"] .liquid-tabs-control {
+  --liquid-tabs-surface: #f1f1f1;
+  --liquid-tab-rest-fill: #ffffff;
+  --liquid-tab-motion-fill: #ffffff;
+  --liquid-tab-active-ink: var(--ink-primary, #171717);
+  --liquid-tab-idle-ink: #6c6c6c;
+}
+
+.liquid-tabs-control[data-liquid-awake="true"] {
+  --liquid-tab-fill: var(--liquid-tab-motion-fill);
+}
+
+.liquid-tabs-row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: max-content;
+  max-width: 100%;
+  align-items: center;
+  gap: 3px;
+  padding: 3px;
+  border-radius: var(--liquid-tabs-radius);
+}
+
+.liquid-tabs-indicator-host {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.liquid-tabs-indicator-proxy {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-radius: var(--liquid-tab-radius);
+  background: var(--liquid-tab-fill);
+  transition:
+    background-color var(--motion-component, 320ms)
+      var(--motion-ease-out, cubic-bezier(0.23, 1, 0.32, 1)),
+    width var(--liquid-control-duration) var(--liquid-control-ease),
+    height var(--liquid-control-duration) var(--liquid-control-ease),
+    transform var(--liquid-control-duration) var(--liquid-control-ease);
+}
+
+/* The resting control is painted by the exact DOM rectangle. The filtered
+   silhouette takes over only while the material is moving, so blur and trail
+   never leave a second oversized pill visible at rest. */
+.liquid-tabs-control:not([data-liquid-awake="true"])
+  .elegans-liquid-silhouette {
+  visibility: hidden;
+}
+
+.liquid-tabs-control[data-liquid-awake="true"]
+  .liquid-tabs-indicator-proxy {
+  visibility: hidden;
+}
+
+.liquid-tabs-control[data-liquid-awake="true"]
+  .liquid-tabs-indicator-proxy {
+  will-change: width, height, transform;
+}
+
+.liquid-tabs-row button {
+  position: relative;
+  display: inline-flex;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  border-radius: var(--liquid-tab-radius);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.liquid-tabs-row button {
+  z-index: 2;
+  border: 0;
+  background: transparent;
+  color: var(--liquid-tab-idle-ink);
+  cursor: pointer;
+  transition: color var(--motion-state, 240ms)
+    var(--motion-ease-out, cubic-bezier(0.23, 1, 0.32, 1));
+}
+
+.liquid-tabs-row button[aria-selected="true"] {
+  color: var(--liquid-tab-active-ink);
+}
+
+.liquid-tabs-row button:focus-visible {
+  outline: 2px solid var(--focus-ring, currentColor);
+  outline-offset: 3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .liquid-tabs-row button:not([aria-selected="true"]):hover {
+    color: var(--ink-primary, #171717);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liquid-tabs-control::before {
+    animation: none;
+  }
+
+  .liquid-tabs-indicator-proxy {
+    transition-duration: 0.01ms;
+  }
+}
