@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import type { LiquidShadow, LiquidSize } from "./types";
+import type { LiquidShadow, LiquidSize } from "./types.js";
 
 type LiquidFilterProps = {
   id: string;

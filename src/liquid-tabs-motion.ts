@@ -1,4 +1,4 @@
-import type { LiquidMoveOptions } from "./types";
+import type { LiquidMoveOptions } from "./types.js";
 
 export type LiquidTabsMoveOptions = Pick<
   LiquidMoveOptions,

@@ -3,12 +3,12 @@ import {
   resolveMovePhysics,
   resolveTailBridgeGeometry,
   stepSpring,
-} from "./motion";
+} from "./motion.js";
 import type {
   LiquidMotionPreset,
   LiquidMoveOptions,
   LiquidMovePhysics,
-} from "./types";
+} from "./types.js";
 
 const SVG_NAMESPACE = "http://www.w3.org/2000/svg";
 const MAX_FRAME_SECONDS = 0.032;

@@ -2,7 +2,7 @@ import type {
   LiquidMotionPreset,
   LiquidMoveOptions,
   LiquidMovePhysics,
-} from "./types";
+} from "./types.js";
 
 const clamp01 = (value: number) => Math.min(1, Math.max(0, value));
 const mix = (from: number, to: number, amount: number) =>

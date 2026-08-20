@@ -14,14 +14,14 @@ import {
   controlMotionFor,
   normalizedTravelForSelection,
   selectionSignature,
-} from "./motion";
+} from "./motion.js";
 import {
   liquidMoveForTravel,
   railScaleForWidth,
   type LiquidTabsMoveOptions,
-} from "./liquid-tabs-motion";
-import { Liquid } from "./liquid";
-import type { LiquidSurfaceFrame } from "./session";
+} from "./liquid-tabs-motion.js";
+import { Liquid } from "./liquid.js";
+import type { LiquidSurfaceFrame } from "./session.js";
 import "./liquid-tabs.css";
 
 type IndicatorGeometry = {

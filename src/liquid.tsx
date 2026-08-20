@@ -12,15 +12,15 @@ import {
   type HTMLAttributes,
   type ReactNode,
 } from "react";
-import { LiquidContext, type LiquidRegistration } from "./context";
-import { LiquidFilter } from "./filter";
-import { LiquidSession, type LiquidSurfaceFrame } from "./session";
+import { LiquidContext, type LiquidRegistration } from "./context.js";
+import { LiquidFilter } from "./filter.js";
+import { LiquidSession, type LiquidSurfaceFrame } from "./session.js";
 import type {
   LiquidMotionPreset,
   LiquidMoveOptions,
   LiquidShadow,
   LiquidSize,
-} from "./types";
+} from "./types.js";
 
 const EMPTY_SIZE: LiquidSize = { width: 1, height: 1 };
 

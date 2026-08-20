@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import type { LiquidMoveOptions } from "./types";
+import type { LiquidMoveOptions } from "./types.js";
 
 export type LiquidRegistration = {
   update: (move?: LiquidMoveOptions) => void;

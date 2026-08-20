@@ -1,5 +1,5 @@
 import { execFileSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, extname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -49,6 +49,21 @@ for (const path of files) {
   const contents = readFileSync(resolve(root, path), "utf8");
   for (const [label, pattern] of forbidden) {
     if (pattern.test(contents)) errors.push(`${path} contains ${label}.`);
+  }
+
+  if (path.endsWith(".js") || path.endsWith(".d.ts")) {
+    const relativeImports = contents.matchAll(
+      /(?:from\s+|import\s*\(\s*)["'](\.[^"']+)["']/g,
+    );
+    for (const [, specifier] of relativeImports) {
+      if (!/\.(?:css|js|json)$/.test(specifier)) {
+        errors.push(`${path} contains an extensionless relative import: ${specifier}`);
+        continue;
+      }
+      if (!existsSync(resolve(root, dirname(path), specifier))) {
+        errors.push(`${path} imports a missing published file: ${specifier}`);
+      }
+    }
   }
 }
 
