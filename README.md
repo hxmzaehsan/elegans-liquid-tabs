@@ -1,14 +1,14 @@
-# Liquid Tabs
+# Tabs
 
 A React segmented control with an elastic travelling active state.
 
-Liquid Tabs works with React 18.2 and newer. It includes keyboard navigation,
+Tabs works with React 18.2 and newer. It includes keyboard navigation,
 focus states, dark mode and reduced-motion support.
 
 ## Install
 
 ```bash
-npm install elegans-liquid-tabs
+npm install elegans-tabs
 ```
 
 ## Use it
@@ -17,7 +17,7 @@ npm install elegans-liquid-tabs
 "use client"
 
 import { useState } from "react"
-import { LiquidTabs } from "elegans-liquid-tabs"
+import { Tabs } from "elegans-tabs"
 
 const views = ["Overview", "Activity", "Files", "Settings"] as const
 
@@ -25,7 +25,7 @@ export function Example() {
   const [view, setView] = useState<(typeof views)[number]>("Overview")
 
   return (
-    <LiquidTabs
+    <Tabs
       items={views}
       value={view}
       onValueChange={setView}
@@ -56,7 +56,7 @@ when you want different values.
 | `ariaLabel` | `string` | Yes | Describes the tab list for assistive technology. |
 | `panelId` | `string` | No | Connects each tab to its tab panel. |
 | `idBase` | `string` | No | Sets predictable tab IDs. |
-| `move` | `LiquidTabsMoveOptions` | No | Adjusts response, bounce and stretch. |
+| `move` | `TabsMoveOptions` | No | Adjusts response, bounce and stretch. |
 | `reduced` | `boolean` | No | Disables spatial motion when set to `true`. |
 | `className` | `string` | No | Adds a class to the outer control. |
 
@@ -66,7 +66,7 @@ The component imports its own CSS. Override these variables on the component
 or an ancestor to fit it into an existing design system:
 
 ```css
-.my-liquid-tabs {
+.my-tabs {
   --liquid-tabs-surface: #ececec;
   --liquid-tab-rest-fill: #ffffff;
   --liquid-tab-motion-fill: #ffffff;

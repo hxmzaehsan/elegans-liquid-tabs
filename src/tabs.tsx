@@ -18,11 +18,11 @@ import {
 import {
   liquidMoveForTravel,
   railScaleForWidth,
-  type LiquidTabsMoveOptions,
-} from "./liquid-tabs-motion.js";
+  type TabsMoveOptions,
+} from "./tabs-motion.js";
 import { Liquid } from "./liquid.js";
 import type { LiquidSurfaceFrame } from "./session.js";
-import "./liquid-tabs.css";
+import "./tabs.css";
 
 type IndicatorGeometry = {
   x: number;
@@ -37,21 +37,21 @@ const INITIAL_GEOMETRY: IndicatorGeometry = {
   width: 68,
   height: 30,
 };
-const LIQUID_TABS_MOTION = "poised" as const;
+const TABS_MOTION = "poised" as const;
 
-export type LiquidTabsProps<T extends string> = {
+export type TabsProps<T extends string> = {
   items: readonly T[];
   value: T;
   onValueChange: (value: T) => void;
   ariaLabel: string;
   panelId?: string;
   idBase?: string;
-  move?: LiquidTabsMoveOptions;
+  move?: TabsMoveOptions;
   reduced?: boolean;
   className?: string;
 };
 
-export function LiquidTabs<T extends string>({
+export function Tabs<T extends string>({
   items,
   value,
   onValueChange,
@@ -61,7 +61,7 @@ export function LiquidTabs<T extends string>({
   move,
   reduced = false,
   className,
-}: LiquidTabsProps<T>) {
+}: TabsProps<T>) {
   const rowRef = useRef<HTMLDivElement>(null);
   const indicatorRef = useRef<HTMLSpanElement>(null);
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -102,7 +102,7 @@ export function LiquidTabs<T extends string>({
     });
   }
   const controlMotion = useMemo(
-    () => controlMotionFor(LIQUID_TABS_MOTION, reduced, nextTravel),
+    () => controlMotionFor(TABS_MOTION, reduced, nextTravel),
     [reduced, nextTravel],
   );
   const liquidMove = useMemo(
@@ -222,7 +222,7 @@ export function LiquidTabs<T extends string>({
       fill="var(--liquid-tab-fill)"
       shadow={[]}
       filterPadding={30}
-      motion={LIQUID_TABS_MOTION}
+      motion={TABS_MOTION}
       reduced={reduced}
       onSurfaceFrame={updateRailForSurface}
     >

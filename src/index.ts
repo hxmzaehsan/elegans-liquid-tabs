@@ -1,4 +1,4 @@
 "use client";
 
-export { LiquidTabs, type LiquidTabsProps } from "./liquid-tabs.js";
-export type { LiquidTabsMoveOptions } from "./liquid-tabs-motion.js";
+export { Tabs, type TabsProps } from "./tabs.js";
+export type { TabsMoveOptions } from "./tabs-motion.js";

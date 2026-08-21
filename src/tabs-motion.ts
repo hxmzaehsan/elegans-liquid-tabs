@@ -1,11 +1,11 @@
 import type { LiquidMoveOptions } from "./types.js";
 
-export type LiquidTabsMoveOptions = Pick<
+export type TabsMoveOptions = Pick<
   LiquidMoveOptions,
   "springiness" | "wobble" | "stretch"
 >;
 
-export const DEFAULT_LIQUID_TABS_MOVE = {
+export const DEFAULT_TABS_MOVE = {
   springiness: 0.1,
   wobble: 0.7,
   stretch: 0.8,
@@ -13,10 +13,10 @@ export const DEFAULT_LIQUID_TABS_MOVE = {
 } as const satisfies LiquidMoveOptions;
 
 export function liquidMoveForTravel(
-  move: LiquidTabsMoveOptions | undefined,
+  move: TabsMoveOptions | undefined,
   travel: number,
 ): LiquidMoveOptions {
-  return { ...DEFAULT_LIQUID_TABS_MOVE, ...move, trail: 0, travel };
+  return { ...DEFAULT_TABS_MOVE, ...move, trail: 0, travel };
 }
 
 export function railOvershootForTravel(travel: number) {

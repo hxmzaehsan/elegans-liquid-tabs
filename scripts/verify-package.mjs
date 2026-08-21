@@ -17,7 +17,7 @@ const requiredFiles = [
   "README.md",
   "dist/index.d.ts",
   "dist/index.js",
-  "dist/liquid-tabs.css",
+  "dist/tabs.css",
   "package.json",
 ];
 const forbidden = [

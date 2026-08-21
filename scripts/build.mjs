@@ -12,5 +12,5 @@ execFileSync(process.execPath, [tsc, "-p", "tsconfig.build.json"], {
   cwd: root,
   stdio: "inherit",
 });
-copyFileSync(resolve(root, "src/liquid-tabs.css"), resolve(dist, "liquid-tabs.css"));
+copyFileSync(resolve(root, "src/tabs.css"), resolve(dist, "tabs.css"));
 copyFileSync(resolve(root, "src/styles.d.ts"), resolve(dist, "styles.d.ts"));

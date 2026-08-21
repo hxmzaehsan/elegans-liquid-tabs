@@ -4,10 +4,10 @@ import {
   liquidMoveForTravel,
   railOvershootForTravel,
   railScaleForWidth,
-  type LiquidTabsMoveOptions,
-} from "./liquid-tabs-motion.ts";
+  type TabsMoveOptions,
+} from "./tabs-motion.ts";
 
-test("Liquid Tabs uses the approved motion by default", () => {
+test("Tabs uses the approved motion by default", () => {
   assert.deepEqual(liquidMoveForTravel(undefined, 0.5), {
     springiness: 0.1,
     wobble: 0.7,
@@ -17,10 +17,10 @@ test("Liquid Tabs uses the approved motion by default", () => {
   });
 });
 
-test("Liquid Tabs rejects trail at its public boundary", () => {
+test("Tabs rejects trail at its public boundary", () => {
   assert.deepEqual(
     liquidMoveForTravel(
-      { springiness: 0.2, trail: 0.9 } as unknown as LiquidTabsMoveOptions,
+      { springiness: 0.2, trail: 0.9 } as unknown as TabsMoveOptions,
       1,
     ),
     {

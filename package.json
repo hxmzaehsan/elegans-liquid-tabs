@@ -1,18 +1,18 @@
 {
-  "name": "elegans-liquid-tabs",
-  "version": "0.1.1",
+  "name": "elegans-tabs",
+  "version": "0.1.0",
   "description": "A React segmented control with an elastic travelling active state.",
   "private": false,
   "type": "module",
   "types": "./dist/index.d.ts",
-  "style": "./dist/liquid-tabs.css",
+  "style": "./dist/tabs.css",
   "files": [
     "dist",
     "README.md",
     "LICENSE"
   ],
   "sideEffects": [
-    "./dist/liquid-tabs.css"
+    "./dist/tabs.css"
   ],
   "exports": {
     ".": {
@@ -21,7 +21,7 @@
     },
     "./styles.css": {
       "types": "./dist/styles.d.ts",
-      "default": "./dist/liquid-tabs.css"
+      "default": "./dist/tabs.css"
     },
     "./package.json": "./package.json"
   },
@@ -33,10 +33,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hxmzaehsan/elegans-liquid-tabs.git"
+    "url": "git+https://github.com/hxmzaehsan/elegans-tabs.git"
   },
   "bugs": {
-    "url": "https://github.com/hxmzaehsan/elegans-liquid-tabs/issues"
+    "url": "https://github.com/hxmzaehsan/elegans-tabs/issues"
   },
   "peerDependencies": {
     "react": ">=18.2.0",

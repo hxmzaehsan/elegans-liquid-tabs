@@ -22,7 +22,7 @@ export type LiquidMoveOptions = {
   wobble?: number;
   stretch?: number;
   trail?: number;
-  /** Normalized travel distance. Liquid Tabs supplies this automatically. */
+  /** Normalized travel distance. Tabs supplies this automatically. */
   travel?: number;
   advanced?: Partial<LiquidMovePhysics>;
 };
